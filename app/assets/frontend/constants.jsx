@@ -1,0 +1,3 @@
+export default {
+  RECEIVE_RESOURCES: 'RECEIVE_RESOURCES'
+}

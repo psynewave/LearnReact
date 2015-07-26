@@ -2,6 +2,9 @@
 
 import Form from './components/Form';
 import ListContainer from './components/ListContainer';
+import API from './API';
+
+API.getAllResources();
 
 class App extends React.Component {
   render() {

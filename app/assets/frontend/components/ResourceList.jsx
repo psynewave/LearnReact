@@ -11,9 +11,9 @@ export default class ResourceList extends React.Component {
 
   }
   componentDidMount () {
-    this.setState({
-      resources: Resource.fetchAll()
-    });
+    // this.setState({
+    //   resources: Resource.fetchAll()
+    // });
   }
   render() {
     let resources = this.state.resources.map((resource, i) => {
