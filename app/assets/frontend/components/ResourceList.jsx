@@ -1,14 +1,29 @@
+import OneResource from "./OneResource"
+import Resource from "../stores/ResourceStore"
 
+export default class ResourceList extends React.Component {
+  constructor(props) {
+    super(props);
 
-  export default class ResourceList extends React.Component {
-    render() {
-      return (
-        <ul className="collection">
-          <li className="collection-item"><div>Article 1<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-          <li className="collection-item"><div>Article 2<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-          <li className="collection-item"><div>Article 3<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-          <li className="collection-item"><div>Article 4<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-        </ul>
-      )
-    }
+    this.state = {
+      resources: []
+    };
+
   }
+  componentDidMount () {
+    this.setState({
+      resources: Resource.fetchAll()
+    });
+  }
+  render() {
+    let resources = this.state.resources.map((resource, i) => {
+      return <OneResource resource={resource} key={i} />;
+    });
+
+    return (
+      <ul className="collection">
+        {resources}
+      </ul>
+    )
+  }
+}
