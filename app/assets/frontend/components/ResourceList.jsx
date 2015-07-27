@@ -6,13 +6,14 @@ let getStateFromStore = () => {
 }
 
 export default class ResourceList extends React.Component {
+  //ES5 alternative is GenInitialState with a function
   constructor(props) {
     super(props);
     this.state = getStateFromStore();
     this.onStoreChange = this.onStoreChange.bind(this);
   }
   onStoreChange() {
-    console.log("5. The store has changed update the state");
+    //console.log("5. The store has changed update the state");
     this.setState(getStateFromStore());
   }
   componentDidMount() {

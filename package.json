@@ -25,6 +25,8 @@
     "events": "^1.0.2",
     "flux": "^2.0.3",
     "lodash": "^3.10.0",
+    "react": "^0.14.0-beta1",
+    "react-dom": "^0.14.0-beta1",
     "webpack": "^1.10.5"
   }
 }

@@ -1,23 +1,12 @@
 import AppDispatcher from "../dispatcher";
 import Actions from "../constants";
+import AppEventEmitter from "./AppEventEmitter";
 
 let _resources = [];
 
-import { EventEmitter } from "events";
-
-class ResourceEventEmitter extends EventEmitter {
+class ResourceEventEmitter extends AppEventEmitter {
   getAll() {
     return _resources;
-  }
-  emitChange () {
-    this.emit("CHANGE");
-    console.log("4. Change event emitted");
-  }
-  addChangeListener(callback) {
-    this.on("CHANGE", callback);
-  }
-  removeChangeListener(callback) {
-    this.removeListener("CHANGE", callback);
   }
 }
 
@@ -28,7 +17,11 @@ AppDispatcher.register( action => {
     case Actions.RECEIVE_RESOURCES:
       //do something
       _resources = action.articles;
-      console.log('3 inside callback registered by the store', action.articles);
+      //console.log('3 inside callback registered by the store', action.articles);
+      ResourseStore.emitChange();
+      break;
+    case Actions.RECEIVE_RESOURCE:
+      _resources.push(action.article);
       ResourseStore.emitChange();
       break;
     default:
