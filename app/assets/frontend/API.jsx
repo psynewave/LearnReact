@@ -14,6 +14,21 @@ export default {
 
     });
   },
+  findResources(searchTerm) {
+    $.get("articles")
+    .success( resources => {
+      //create server action
+      var resultSet = $.grep(resources, function (e) {
+          return e.title.indexOf(searchTerm) == 0;
+      });
+
+      ServerActionsCreator.receiveResources(resultSet);
+
+    })
+    .error(error => {
+
+    });
+  },
 
   createResource(data) {
     $.post("/articles", {article: data})

@@ -1,4 +1,5 @@
 import OneResource from "./OneResource"
+import NoResource from "./NoResource"
 import ResourceStore from "../stores/ResourceStore"
 
 let getStateFromStore = () => {
@@ -28,9 +29,13 @@ export default class ResourceList extends React.Component {
       return <OneResource resource={resource} key={i} />;
     });
 
+    if (!resources.length){
+      resources = <NoResource />;
+    } 
+
     return (
       <ul className="collection">
-        {resources}
+          {resources}
       </ul>
     )
   }
