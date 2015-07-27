@@ -17,9 +17,18 @@ export default {
   findResources(searchTerm) {
     $.get("articles")
     .success( resources => {
-      //create server action
+      //old es5 way
+      /*
       var resultSet = $.grep(resources, function (e) {
           return e.title.indexOf(searchTerm) == 0;
+      });
+      */
+
+      //new es6 way
+
+      let resultSet = resources.filter((article) => {
+        //using indexOf to return all results if there is any empty search term
+        return article.title.indexOf(searchTerm) == 0;
       });
 
       ServerActionsCreator.receiveResources(resultSet);

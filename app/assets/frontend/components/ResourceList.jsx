@@ -31,7 +31,7 @@ export default class ResourceList extends React.Component {
 
     if (!resources.length){
       resources = <NoResource />;
-    } 
+    }
 
     return (
       <ul className="collection">
